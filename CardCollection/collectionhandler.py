@@ -12,3 +12,14 @@ class CollectionHandler:
         load_collection_file(TBD): Handles internal logic for loading data from a file or source
         save_collection_file(data: TBD): Handles the interal logic for saving data to a file or source
     """
+
+def handle_collection_load(self) -> List[Card]:
+    """
+    Public method to load a collection of Pokemon cards.
+
+    Returns:
+        List[Card]: A list of Card objects representing the loaded collection
+    """
+
+    collection = self.load_collection_file()
+    return collection
