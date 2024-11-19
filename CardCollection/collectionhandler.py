@@ -33,3 +33,14 @@ def handle_collection_save(self, data: List[Tuple]) -> None;
     """
 
     self.save_collection_file(data)
+
+def load_collection_file(self, source: Optional[str] = None) -> List[Card]:
+    """
+    Private method to load collection data from a file or source
+
+    Args:
+        source (Optional[str]): The source of the collection (e.g., file path)
+
+    Returns:
+        List[Card]: A list of Card objects representing the collection
+    """
