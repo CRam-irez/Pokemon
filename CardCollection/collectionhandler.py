@@ -23,3 +23,13 @@ def handle_collection_load(self) -> List[Card]:
 
     collection = self.load_collection_file()
     return collection
+
+def handle_collection_save(self, data: List[Tuple]) -> None;
+    """
+    Public method to save a collection of Pokemon cards
+
+    Args:
+        data (List[Tuple]): A list of tuples representing card data to save
+    """
+
+    self.save_collection_file(data)
