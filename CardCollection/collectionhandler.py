@@ -44,3 +44,12 @@ def load_collection_file(self, source: Optional[str] = None) -> List[Card]:
     Returns:
         List[Card]: A list of Card objects representing the collection
     """
+
+    def save_collection_file(self, data: List[Tuple], destination: Optional[str] = None) -> None:
+        """
+        Private method to save collection data to a file or destination
+
+        Args:
+            data(List[Tuple]): A list of tuples representing card data to save
+            destination (Optional[str]): The destination for the collection (e.g., file path)
+        """
