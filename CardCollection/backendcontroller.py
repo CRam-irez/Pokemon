@@ -8,6 +8,7 @@ import json
 import inithandler
 import searchhandler
 import discoverhandler
+from collectionhandler import CollectionHandler
 
 
 class BackendController(QObject):
@@ -128,6 +129,16 @@ class BackendController(QObject):
         Args:
             none: This function does not take any arguments.
         """
+        try:
+            collection_handler = CollectionHandler()
+            collection = collection_handler.handle_collection_load()
+            if collection:
+                collection_data = [{"name": card.name, "type": card.type} for card in collection]
+                self.loadResults.emit(json.dumps(collection_data))
+            else:
+                self.loadResults.emit(json.dumps({"error": "Failed to load collection"}))
+        except Exception as e:
+            self.loadResults.emit(json.dumps({"error": str(e)}))
 
     @Slot(list)
     def request_save_collection(self, params: list[tuple[str, str, str]]):
@@ -140,3 +151,9 @@ class BackendController(QObject):
             params (list[tuple[str, str, str]]):
                 List of tuples of the form (category, subcategory, target)
         """
+        try:
+            collection_handler = CollectionHandler()
+            collection_handler.handle_collection_save(params)
+            self.loadResults.emit(json.dumps({"success": "Collection saved successfully"}))
+        except Exception as e:
+            self.loadResults.emit(json.dumps({"error": str(e)}))
