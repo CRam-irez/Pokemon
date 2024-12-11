@@ -6,7 +6,6 @@ import QtQuick.Controls.Fusion 2.15
 import Qt5Compat.GraphicalEffects
 import QtQuick3D
 
-
 // Page 1: Search Page
 Item {
     id: searchPage
@@ -2279,7 +2278,7 @@ Item {
             }
 
             Rectangle {
-                id: settingsButtonHighlight
+                id: collectionsButtonHighlight
                 x: 498
                 width: 80
                 height: 50
@@ -2291,7 +2290,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 z: 0
                 Button {
-                    id: btnSettings
+                    id: btnCollection
                     x: -4
                     y: 2
                     text: ""
@@ -2308,7 +2307,7 @@ Item {
                     ToolTip.timeout: 5000
                     ToolTip.delay: 800
                     ToolTip.visible: hovered
-                    ToolTip.text: qsTr("Search Settings")
+                    ToolTip.text: qsTr("Add to Collection")
 
                     onReleased: {
                                     settingsButtonHighlight.border.color = primaryColor;
@@ -2320,21 +2319,19 @@ Item {
                                     settingsButtonHighlight.color = screenColor;
                                 }
                     onClicked: {
-                                    // setComboBox.clearParams();
-                                    //console.log("Calling signal clearParams()");
 
-                                }
+                    }
                     horizontalPadding: 0
 
                     Image {
-                        id: settingsButtonImage
-                        y: -59
+                        id: collectionButtonImage
+                        y: -83
                         width: 176
                         height: 210
-                        source: "https://images.pokemontcg.io/swsh2/168_hires.png"
+                        source: "https://cdn-icons-png.flaticon.com/512/188/188931.png"
                         sourceSize.width: 150
                         sourceSize.height: 209
-                        scale: 0.52
+                        scale: 0.22
                         fillMode: Image.PreserveAspectCrop
                         anchors.horizontalCenterOffset: 0
                         anchors.horizontalCenter: parent.horizontalCenter
@@ -2401,6 +2398,7 @@ Item {
                 console.log("Error in response:",
                             data.error) // Log the error message
                 cards = []
+                currentCard = {}
             } else {
                 cards = data.map(card => ({
                                               "name": card.name,

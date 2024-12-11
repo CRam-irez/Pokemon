@@ -169,8 +169,11 @@ Window {
               activeFocusOnTab: true
 
             }
+
+          Collection {
+              activeFocusOnTab: true
+          }
+
         }
     }
 }
-
-

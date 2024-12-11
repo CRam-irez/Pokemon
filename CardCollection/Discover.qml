@@ -254,6 +254,8 @@ Item { // Page 2: Discover Page
                                 scale.y: 3
                                 scale.x: 2.5
 
+                                property real rotationAngle: 180 //Default to showing back
+
                                 // Front side of the card
                                 Model {
                                     id: frontCard
@@ -261,7 +263,8 @@ Item { // Page 2: Discover Page
                                     receivesShadows: false
                                     castsShadows: false
                                     scale: Qt.vector3d(1, 1, 1) // Adjust dimensions for card thickness
-                                    eulerRotation.y: 0
+                                    eulerRotation.y: rotationAngle
+                                    //visible: rotationAngle >= 0 && rotationAngle <= 90
 
                                     materials: [
                                         DefaultMaterial {
@@ -284,7 +287,8 @@ Item { // Page 2: Discover Page
                                     id: backCard
                                     source: "#Rectangle"
                                     scale: Qt.vector3d(1, 1, 1)
-                                    eulerRotation.y: 180 // Rotated to face the opposite direction
+                                    eulerRotation.y: rotationAngle // Rotated to face the opposite direction
+                                    //visible: rotationAngle > 90 && rotationAngle <= 180
 
                                     materials: [
                                         DefaultMaterial {
@@ -821,7 +825,7 @@ Item { // Page 2: Discover Page
                 x: 531
                 width: 40
                 height: 40
-                opacity: 1
+                opacity: 0
                 text: ""
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
@@ -836,7 +840,7 @@ Item { // Page 2: Discover Page
                 ToolTip.delay: 800
                 ToolTip.timeout: 5000
                 ToolTip.visible: hovered
-                ToolTip.text: qsTr("Toggle both drawers.")
+                ToolTip.text: qsTr("Add to Collection")
 
                 MouseArea {
                     visible: false
