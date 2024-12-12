@@ -263,8 +263,7 @@ Item { // Page 2: Discover Page
                                     receivesShadows: false
                                     castsShadows: false
                                     scale: Qt.vector3d(1, 1, 1) // Adjust dimensions for card thickness
-                                    eulerRotation.y: rotationAngle
-                                    //visible: rotationAngle >= 0 && rotationAngle <= 90
+                                    eulerRotation.y: 0
 
                                     materials: [
                                         DefaultMaterial {
@@ -288,7 +287,6 @@ Item { // Page 2: Discover Page
                                     source: "#Rectangle"
                                     scale: Qt.vector3d(1, 1, 1)
                                     eulerRotation.y: rotationAngle // Rotated to face the opposite direction
-                                    //visible: rotationAngle > 90 && rotationAngle <= 180
 
                                     materials: [
                                         DefaultMaterial {

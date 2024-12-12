@@ -10,12 +10,12 @@ class SearchHandler:
         handle_search(search_parameters): Constructs a query string using the Backend class, construct_query function.
     """
 
-    def handle_search(self, search_parameters: list[tuple[str, str, str]]) -> list[dict[str, str]]:
+    def handle_search(self, search_parameters: list[tuple[str, str, str]], max_results: int = 236) -> list[dict[str, str]]:
         """
-        A function that takes a list of tuples representing search parameters, constructs a query string using the Backend class, and retrieves a list of Card objects from the API.
+        A function that takes a list of tuples representing search parameters, constructs a query string using the Backend class, and retrieves a list of Card objects from the API. Hard caps the search at 236 cards, biggest set
 
         Args:
-            search_parameters (List[Tuple[str, str, str]]): A list of tuples where each tuple contains:
+            search_parameters (List[Tuple[str, str, str]], max_results: int = 236): A list of tuples where each tuple contains:
                 - category (str): The main category for the search.
                 - subcategory (str): The subcategory to refine the search.
                 - target (str): The search target (value being searched).
@@ -28,8 +28,12 @@ class SearchHandler:
 
         query = Backend.construct_query(self, search_parameters)
         results = Backend.query_api(self, query)
-        return self.handle_card_process(results)
-    
+
+        # Limit results to max_results (236)
+        limited_results = results[:max_results]
+
+        return self.handle_card_process(limited_results)
+
     def handle_card_process(self, cards: list[Card]) -> list[dict[str, str]]:
         """
         A function that takes a list of tuples representing search parameters, constructs a query string using the Backend class, and retrieves a list of Card objects from the API.
@@ -41,6 +45,5 @@ class SearchHandler:
                 - key: card attribute defined by API
                 - value: card data string for that attribute
         """
-        
-        return CardProcessor.process_cards(cards)
 
+        return CardProcessor.process_cards(cards)

@@ -5,6 +5,8 @@ import QtQuick.Window 2.15
 import QtQuick.Controls.Fusion 2.15
 import Qt5Compat.GraphicalEffects
 import QtQuick3D
+import "."
+
 
 // Page 1: Search Page
 Item {
@@ -16,6 +18,10 @@ Item {
     Layout.preferredWidth: 600
     Layout.fillHeight: false
     Layout.fillWidth: false
+
+    ListModel {
+    id: savedCardsModel
+    }
 
     property bool counterVisible: false
 
@@ -2319,7 +2325,18 @@ Item {
                                     settingsButtonHighlight.color = screenColor;
                                 }
                     onClicked: {
-
+                                    // Check if a valid card is selected
+                                    if (selectedIndex >= 0 && selectedIndex < cards.length) {
+                                      const selectedCard = cards[selectedIndex];
+                                      // Append the card to the savedCardsModel
+                                      savedCardsModel.append({
+                                        "name": selectedCard.name,
+                                        "image": selectedCard.imageUrl
+                                      });
+                                      collectionHandler.processCardInfo(JSON.stringify(selectedCard));
+                                    } else {
+                                      console.log("Error: No valid card selected");
+                                    }
                     }
                     horizontalPadding: 0
 

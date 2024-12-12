@@ -19,14 +19,7 @@ Item {
     // Model for the collection of saved cards
     ListModel {
         id: savedCardsModel
-        // Sample data, you will append cards dynamically
-        ListElement { name: ""; image: "cardback.png" }
-        ListElement { name: ""; image: "cardback.png" }
-        ListElement { name: ""; image: "cardback.png" }
-       // ListElement { name: ""; image: "cardback.png" }
-       // ListElement { name: ""; image: "cardback.png" }
-       // ListElement { name: ""; image: "cardback.png" }
-        // Add more cards as needed
+
     }
 
     // GridLayout for arranging cards in a grid

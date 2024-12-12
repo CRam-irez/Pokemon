@@ -4,7 +4,6 @@ import QtQuick.Layouts
 import QtQuick.Window 2.15
 import QtQuick.Controls.Fusion 2.15
 
-
 Window {
     id: window
     width: 600

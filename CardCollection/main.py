@@ -5,6 +5,7 @@ from PySide6.QtQuickControls2 import QQuickStyle
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
 from backendcontroller import BackendController
+from collectionhandler import CollectionHandler
 
 
 if __name__ == "__main__":
@@ -14,6 +15,9 @@ if __name__ == "__main__":
 
     backendController = BackendController()
     engine.rootContext().setContextProperty("backendController", backendController)
+
+    collectionHandler = CollectionHandler()
+    engine.rootContext().setContextProperty("collectionHandler", collectionHandler)
 
     qml_file = Path(__file__).resolve().parent / "main.qml"
     engine.load(qml_file)

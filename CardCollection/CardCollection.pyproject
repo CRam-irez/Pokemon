@@ -30,6 +30,7 @@
         "Search.qml",
         "discoverhandler.py",
         "Collection.qml",
-        "collectionhandler.py"
+        "collectionhandler.py",
+        "SharedModel.qml"
     ]
 }
